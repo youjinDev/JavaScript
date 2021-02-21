@@ -54,6 +54,34 @@
       <div class="box">20</div>
     </div>
 
-    <script></script>
+    <script>
+      // DOM 요소 위에 있는 모든 .box클래스 가지고 오기
+      // nodeList형태
+      const boxes = document.querySelectorAll('.box');
+
+      const options = {
+        root: document.querySelector('.container'), //container 기준
+        rootMargin: '0px', //0px기준, 선준비
+        threshold: 0.3, // 0~1값, 얼마나 들어와야 callback 수행할지 결정
+                     // inIntersecting은 나갈때와 들어올때가 반대
+      };
+
+      const callback = (entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            console.log('들어옵니다');
+            entry.target.classList.add('active');
+          } else {
+            console.log('나갑니다');
+            entry.target.classList.remove('active');
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(callback, options);
+
+      boxes.forEach(box => observer.observe(box)); 
+
+    </script>
   </body>
 </html>

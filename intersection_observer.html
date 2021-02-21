@@ -14,7 +14,7 @@
         height: 300px;
         margin: 80px auto;
         background-color: plum;
-        transition: 500ms;
+        transition: 3000ms;
       }
 
       .box.active {
@@ -49,12 +49,15 @@
       // nodeList형태
       const boxes = document.querySelectorAll('.box');
 
-      const observer = new IntersectionObserver((entries, observer) => {
-        // console.log('관찰!');
-        // console.log(entries);
-        // console.log(observer);
+      const options = {
+        root: null, //viewport 기준
+        rootMargin: '0px', //0px기준, 선준비
+        threshold: 0.3, // 0~1값, 얼마나 들어와야 callback 수행할지 결정
+                     // inIntersecting은 나갈때와 들어올때가 반대
+      };
+
+      const callback = (entries, observer) => {
         entries.forEach(entry => {
-          // console.log(entry.target);
           if(entry.isIntersecting) {
             console.log('들어옵니다');
             entry.target.classList.add('active');
@@ -62,8 +65,11 @@
             console.log('나갑니다');
             entry.target.classList.remove('active');
           }
-        })
-      });
+        });
+      };
+
+      const observer = new IntersectionObserver(callback, options);
+
       boxes.forEach(box => observer.observe(box)); 
     </script>
   </body>
