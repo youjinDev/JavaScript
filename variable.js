@@ -4,6 +4,21 @@
 // 1. variable let
 // let : mutable data type
 // const : immutable data type
+let hey;
+hey = 'string!';
+console.log(hey);
+hey = 3;
+console.log(hey);
+
+let heey = hey;
+console.log(heey);
+heey = 'changing!';
+console.log(heey); // 변경 가능 (재할당 가능)
+
+let nanami = 'nanami';
+let nanami = 'love'; // Uncaught SyntaxError: Identifier 'nanami' has already been declared (동일한 변수명 재선언 불가)
+console.log(nanami);
+
 
 let name = 'youjin';
 console.log(name);
@@ -30,6 +45,13 @@ a = 2;
 // primitive : single item인 number, boolean, string, null, undefined
 // object : 여러개의 single item, box container
 // function, first-class function : 함수도 변수에 할당 가능, 함수에 파라미터로 전달 가능, 리턴 타입으로도 가능
+
+const school = 'dokyo';
+console.log(school);
+const school2 = school;
+console.log(school2);
+school2 = 2;
+console.log(school2); // Uncaught TypeError: Assignment to constant variable.
 
 const infinity = 1/0;
 console.log(infinity);
