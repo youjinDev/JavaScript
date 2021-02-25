@@ -15,16 +15,20 @@ console.log(heey);
 heey = 'changing!';
 console.log(heey); // 변경 가능 (재할당 가능)
 
-let nanami = 'nanami';
-let nanami = 'love'; // Uncaught SyntaxError: Identifier 'nanami' has already been declared (동일한 변수명 재선언 불가)
-console.log(nanami);
+// let nanami = 'nanami';
+// let nanami = 'love'; // Uncaught SyntaxError: Identifier 'nanami' has already been declared (동일한 변수명 재선언 불가)
+// console.log(nanami);
 
+let c = 10;
+let d = c;
+c = 11;
+console.log(c, d);  // 11, 10 출력
+console.log(c===d); // false 출력
+console.log(Object.is(d, c)); //false 출력
 
 let name = 'youjin';
 console.log(name);
 name='jello';
-console.log(name);
-
 console.log(name);
 
 // Don't use var
@@ -48,7 +52,7 @@ a = 2;
 
 const school = 'dokyo';
 console.log(school);
-const school2 = school;
+// const school2 = school;
 console.log(school2);
 school2 = 2;
 console.log(school2); // Uncaught TypeError: Assignment to constant variable.
