@@ -7,61 +7,129 @@
   --color-pink: #fd7f84;
   --color-light-grey: #dfdfdf;
 
-  /* font */
+  /* size */
+  --base-space: 8px;
+  --size-button: 100px;
+  --size-img-button: 80px;
+  --size-border: 4px;
+  --size-thumbnail: 50px;
+  --button-font-size: 20px;
+  --item-font-size: 17px;
+
+  /* animation */
+  --animation-duration: 300ms;
 }
 
-/* Global */
+/* Universal tags */
 
 * {
   box-sizing: border-box;
+  font-family: "Nanum Myeongjo", serif;
+}
+
+body {
+  background-color: var(--color-black);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 section {
   background-color: var(--color-black);
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
+  margin: 20px;
+  width: 100%;
 }
+
+/* Common */
 
 .btn {
   background-color: transparent;
-  width: 120px;
-  height: 120px;
+  width: var(--size-button);
+  height: var(--size-button);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: transform var(--animation-duration) ease;
+  margin-right: var(--base-space);
 }
 
 .btn:hover {
+  transform: scale(1.1);
 }
 
-.btn.colorBtn {
+/* Main */
+
+.logo {
+  cursor: pointer;
+  transition: transform var(--animation-duration) ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Category */
+
+.imgBtn {
+  width: var(--size-img-button);
+  height: var(--size-img-button);
+}
+
+.colorBtn {
   color: var(--color-white);
+  font-size: var(--button-font-size);
+  border-radius: var(--size-border);
 }
 
-li {
-  background-color: var(--color-white);
-  width: 1000px;
-}
-
-/* main */
-
-/* category */
-
-.btn.colorBtn.blue {
+.blue {
   background-color: var(--color-blue);
 }
 
-.btn.colorBtn.yellow {
+.yellow {
   background-color: var(--color-yellow);
 }
 
-.btn.colorBtn.pink {
+.pink {
   background-color: var(--color-pink);
 }
 
-/* contents */
+/* Contents */
+
+#contents {
+  background-color: var(--color-light-grey);
+  width: 70%;
+  height: 90%;
+  align-items: baseline;
+  overflow-y: auto;
+}
 
 .items {
+  background-color: var(--color-light-grey);
   list-style-type: none; /* Remove bullets */
-  padding: 0; /* Remove padding */
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+.item {
+  background-color: var(--color-white);
+  margin: var(--base-space);
+  display: flex;
+  align-items: center;
+}
+
+.item__thumbnail {
+  margin: var(--base-space);
+  width: var(--size-thumbnail);
+  height: var(--size-thumbnail);
+}
+
+.item__description {
+  font-size: var(--item-font-size);
+  margin-left: var(--base-space);
 }
