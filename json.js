@@ -48,3 +48,24 @@ jelly.manufacture();
 console.log(jelly.manufacturingDate.getDate());
 // console.log(obj.manufacturingDate.getDate()); json.js:49 Uncaught TypeError: obj.manufacturingDate.getDate is not a function at json.js:49
 
+console.clear();
+let room = {
+    number: 23
+  };
+  
+  let meetup = {
+    title: "Conference",
+    participants: [{name: "John"}, {name: "Alice"}],
+    place: room // meetup은 room을 참조합니다.
+  };
+  
+  room.occupiedBy = meetup; // room references meetup
+  
+  console.log(JSON.stringify(meetup, ['title', 'participants']) );
+  // {"title":"Conference","participants":[{},{}]}
+  console.log(JSON.stringify(meetup, ['title', 'participants', 'place', 'name', 'number']) );
+  
+  JSON.stringify(meetup, (key, value) => {
+    console.log(`key : ${key}, value : ${value}`);
+    return key == 'occupiedBy' ? undefined : value;
+  });
