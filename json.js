@@ -69,3 +69,5 @@ let room = {
     console.log(`key : ${key}, value : ${value}`);
     return key == 'occupiedBy' ? undefined : value;
   });
+
+  
