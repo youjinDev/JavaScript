@@ -47,3 +47,28 @@ console.log(obj[0]);
 
 obj.__proto__ = 5;
 console.log(obj.__proto__); // 객체가 출력됨
+
+let student = {
+    name : 'Itadori',
+    age : 15,
+    favorite : null
+};
+
+for (prop in student) {
+    console.log(student[prop]); // value 출력
+    console.log(prop); // key 출력
+}
+
+let codes = {
+    "+49": "독일",
+    "+41": "스위스",
+    "+44": "영국",
+    // ..,
+    "+1": "미국"
+  };
+  
+  for (let code in codes) {
+    console.log( +code ); // 49, 41, 44, 1
+  }
+
+  consoloe.log(typeof student);
