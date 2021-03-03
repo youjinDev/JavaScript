@@ -50,4 +50,6 @@ user4.name = 'Jung';
 console.log(user4.name);
 console.log(user4.gender);
 
-
+// Object의 method assign을 사용하면 반복문 없이도 객체를 복사할 수 있다.
+let clone = Object.assign({}, user);
+console.log(clone);
