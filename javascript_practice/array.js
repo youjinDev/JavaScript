@@ -49,4 +49,41 @@ let Students = [
 console.log(Students);
 console.log(Students.age);
 
+console.clear();
+
+let Donuts = [
+{name : 'choco', price : 2000},
+{name : 'peanut', price : 1000},
+{name : 'vanilla', price : 2200},
+{name : 'berry', price : 2300},
+{name : 'jelly', price : 1900},
+{name : 'butter', price : 2500},
+];
+
+Donuts.forEach(donut => {
+    if (donut['name']=='vanilla') {
+        console.log(donut.price);
+    }
+});
+
+fetch('donut.json')
+  .then((response) => response.json())
+  .then(json => {
+    // let print = JSON.stringify(json);
+    // console.log(print);
+    return json.Donuts;
+  });
+
+  function printDonutPrice (Donuts) {
+    Donuts.forEach(donut => {
+        if (donut['name']=='berry') {
+            console.log(donut['price']);
+        }
+    });
+  }
+
+  printDonutPrice(Donuts);
+
+
+
 

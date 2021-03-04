@@ -1,0 +1,12 @@
+{
+    "Donuts" : [
+
+        {"name" : "vanilla", "price" : "3000"},
+        {"name" : "choco", "price" : "2900"},
+        {"name" : "berry", "price" : "2100"},
+        {"name" : "peach", "price" : "2000"},
+        {"name" : "butter", "price" : "2200"},
+        {"name" : "lime", "price" : "2300"}
+
+    ]
+}
