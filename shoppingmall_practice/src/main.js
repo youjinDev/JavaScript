@@ -24,7 +24,6 @@ function createHTMLString(item) {
     `;
 }
 
-
 // main
 
 loadItems() //item들을 동적으로 받아와서
