@@ -142,8 +142,9 @@
     let avg = sum / scores.length;
     console.log(avg);
 
+
     // solution : reduce(callback, initialValue)
-    const result = students.reduce((prev, curr) => prev + curr.score, 0);
+    const result = students.reduce((prev, curr) => prev + curr.score, 0);
     console.log(result / students.length);
   }
   
