@@ -4,7 +4,7 @@ var url = require('url');
  
 // createServer를 이용해 웹 서버 객체 생성
 // 이 서버로 오는 HTTP요청마다 createServer에 인자로 전달된 함수가 호출된다 
-var app = http.createServer((request,response) => {
+var server = http.createServer((request,response) => {
   // Here is what you do
 
     var _url = request.url;
@@ -43,4 +43,6 @@ var app = http.createServer((request,response) => {
     console.log(title);
 });
 
-app.listen(3000); //요청을 실제로 처리
+server.listen(3000); //요청을 실제로 처리
+console.log('filename : ' + __filename)
+console.log('dirname : ' + __dirname)
