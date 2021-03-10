@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            background-color: cornsilk;
+            overflow: scroll;
+        }
+
+        aside {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+            margin: 10px
+        }
+
+        .special {
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <button class="scrollBy">scroll By 100px</button>
+        <button class="scrollTo">scroll To 100px</button>
+        <button class="scrollSpecial">scroll into special</button>
+    </aside>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        const special = document.querySelector('.special');
+        // let domRect = special.getBoundingClientRect();
+        // console.log(domRect);
+        const scrollBy = document.querySelector('.scrollBy');
+        const scrollTo = document.querySelector('.scrollTo');
+        const scrollSpecial = document.querySelector('.scrollSpecial');
+        
+        special.addEventListener('click', (e) => {
+        
+            console.log(special.getBoundingClientRect());
+            console.log(e);
+            console.log(`clientX : ${e.clientX}, clientY : ${e.clientY}`);
+            console.log(`pageX : ${e.pageX}, pageY : ${e.pageY}`);
+        });
+
+        scrollBy.addEventListener('click', () => {
+            window.scrollBy(0, 100);
+            console.log(window.scrollY, window.innerHeight, document.body.clientHeight); //scrollY만 변함
+            if (Math.round(window.scrollY + window.innerHeight) >= document.body.clientHeight) { // scroll bottom이면
+                console.log('Bottom');
+                window.scrollTo(0, 0); // to the top
+            }
+        });
+
+        scrollTo.addEventListener('click', () => {
+            window.scrollTo(0, 100);
+        });
+
+        scrollSpecial.addEventListener('click', () => {
+            special.scrollIntoView();
+        })
+
+    </script>
+</body>
+</html>
