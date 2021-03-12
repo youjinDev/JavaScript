@@ -7,7 +7,6 @@ const horizontal = document.querySelector('.line.horizontal');
 
 document.addEventListener('mousemove', e => {
     // result에 동적으로 좌표를 출력하게 만든다
-    // let resultX = getCoordinatesX(e);
     let Y = e.clientY;
     let X = e.clientX;
 
@@ -27,5 +26,7 @@ document.addEventListener('mousemove', e => {
 
 // 추가할 기능
 // 사운드
-// 랜덤으로 표적 좌표 받아오기
-// 공공칠빵 처럼 네 번 내에 좌표 클릭해야 성공하는 거
+const audio = document.querySelector('.shoot');
+document.addEventListener('click', () => {
+audio.play();
+})
