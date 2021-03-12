@@ -7,54 +7,107 @@
     <style>
       body {
         background-color:seashell;
+        text-align: center;
       }
 
-      img, button {
-        display: block;
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img,
+      button {
         margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
       }
 
-      .btn {
-        border: none;
-        background-color: white;
-        width: 120px;
-        padding: 10px;
-        font-size: 15px;
-      }
-
-      .btn:hover {
+      button:hover{
         border: none;
         background-color: salmon;
       }
 
+      .btn,
+      .makeRandom,
+      .reset {
+        border: none;
+        background-color: white;
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
     </style>
   </head>
+
   <body>
+    <button class="makeRandom">당근🥕만들기</button>
     <button class="btn">토끼🐇찾기</button>
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img class="rabbit" src="img/rabbit.png" alt="rabbit">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
-    <img src="img/carrot.png" alt="carrot">
+    <button class="reset">RESET</button>
+
+
+      <div class="wrapper">
+        <img class="rabbit" src="img/rabbit.png" alt="rabbit">
+      </div>
+
     
     <script>
-      const btn = document.querySelector('.btn');
-      const rabbit = document.querySelector('.rabbit');
-      btn.addEventListener('click', () => {
+      const btnFind = document.querySelector('.btn');
+      let rabbit = document.querySelector('.rabbit');
+      const btnReset = document.querySelector('.reset');
+
+      btnFind.addEventListener('click', () => {
         rabbit.scrollIntoView({
-          block : "center",
-          behavior : "smooth"
+          block : 'center',
+          behavior : 'smooth'
         });
       });
+
+      // 추가 기능
+      // 버튼 클릭시 random으로 당근, 토끼 이미지 생성 (당근은 n개, 토끼는 1개)
+      const wrapper = document.querySelector('.wrapper');
+      const btnRandom = document.querySelector('.makeRandom');
+
+
+      btnRandom.addEventListener('click', () => {
+        makeCarrots();
+      })
+
+      btnReset.addEventListener('click', () => {
+        reset();
+      })
+      
+
+      // Function
+
+      function makeCarrots () { 
+        let countTotal = Math.floor(Math.random() * (11 - 1)) + 1;  // 1~10 정수 랜덤으로 출력
+        let countUpside = Math.floor(Math.random() * countTotal) + 1; // 1~countTotal 보다 항상 작은 수의 정수 랜덤 출력
+        let countDownside = countTotal - countUpside;
+
+        for (let i = 1; i <= countUpside ; i++) {
+        rabbit.insertAdjacentHTML('beforebegin', '<img class="carrot" src="img/carrot.png" alt="carrot">');
+        }
+        for (let i = 1; i <= countDownside; i++) {
+          rabbit.insertAdjacentHTML('afterend', '<img class="carrot" src="img/carrot.png" alt="carrot">');
+        }
+      }
+
+      // .....이게 왜 되지...?
+      function reset() {
+        wrapper.innerHTML = '';
+        let img = document.createElement('img');
+        img.src = 'img/rabbit.png';
+        img.className = 'rabbit';
+        rabbit = img;
+        wrapper.appendChild(rabbit);
+        // console.log(wrapper);
+        // console.log(rabbit);
+        
+      }
+      
     </script>
   </body>
 </html>
+
+
