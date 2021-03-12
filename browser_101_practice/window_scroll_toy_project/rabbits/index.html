@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <style>
+      body {
+        background-color:seashell;
+      }
+
+      img, button {
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        border: none;
+        background-color: white;
+        width: 120px;
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      .btn:hover {
+        border: none;
+        background-color: salmon;
+      }
+
+    </style>
+  </head>
+  <body>
+    <button class="btn">토끼🐇찾기</button>
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img class="rabbit" src="img/rabbit.png" alt="rabbit">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    <img src="img/carrot.png" alt="carrot">
+    
+    <script>
+      const btn = document.querySelector('.btn');
+      const rabbit = document.querySelector('.rabbit');
+      btn.addEventListener('click', () => {
+        rabbit.scrollIntoView({
+          block : "center",
+          behavior : "smooth"
+        });
+      });
+    </script>
+  </body>
+</html>
