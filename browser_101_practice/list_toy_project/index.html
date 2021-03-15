@@ -10,15 +10,22 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="header">Shopping list</div>
+    <p class="header">Shopping list</p>
     <div class="container">
         <ul class="list">
-            <li>어쩌고 저쩌고 <img src="img/garbage.png" alt="delete" class="delete"></li>
-            <li>어쩌고 저쩌고 <img src="img/garbage.png" alt="delete" class="delete"></li>
+            <li>어쩌고 저쩌고
+                <button class="btn delete">
+                    <img src="img/garbage.png" alt="trashCan" class="trash">
+                </button>
+            </li>
         </ul>
     </div>
-    <input type="text" id="name" name="name">
-    <div class="footer"><img src="img/add.png" alt="add" class="add"></div>
+    <input type="text" class="input">
+    <div class="footer">
+        <button class="btn add">
+            <img src="img/add.png" alt="add" class="plus">
+        </button>
+    </div>
 </div>
 
 </body>
