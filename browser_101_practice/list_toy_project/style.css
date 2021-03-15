@@ -1,18 +1,19 @@
 /* global */
 
+body {
+    box-sizing: border-box;
+}
+
 button {
     background-color: transparent;
     cursor: pointer;
     border: none;
     outline: none;
-  }
-
-body {
-    box-sizing: border-box;
 }
 
 .wrapper {
-    background-color: cadetblue;
+    background: rgb(238,174,202);
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     max-width: 600px;
     margin: 20px auto;
     border-radius: 50px;
@@ -20,13 +21,14 @@ body {
 
 .header {
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
     margin: 0;
     padding: 20px;
+    color: white;
 }
 
 .container {
-    background-color: cornsilk;
+    background-color: #f5f7fa;
     height: 500px;
     overflow: auto;
 }
@@ -34,17 +36,22 @@ body {
 .list {
     list-style: none;
     font-size: 20px;
-    padding: 10px 20px;
+    padding: 10px 50px;;
 }
 
-.btn.delete {
-    position: relative;
-    left: 70%;
+.divider {
+    height: 1px;
+    background-color: rgb(230, 227, 227);
+    margin: 10px;
 }
 
 .trash {
+    position: sticky;
+    left: 100%;
+    padding: 0;
     width: 27px;
     height: 27px;
+    cursor: pointer;
 }
 
 .input {
