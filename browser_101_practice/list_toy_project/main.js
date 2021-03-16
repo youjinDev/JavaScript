@@ -1,9 +1,9 @@
 'use strict';
 
-
 const list = document.querySelector('.list');
 const addBtn = document.querySelector('.btn.add');
 const input = document.querySelector('.input');
+const container = document.querySelector('.container');
 
 addBtn.addEventListener('click', (e) => {
     onAddList();
@@ -13,7 +13,7 @@ input.addEventListener('keypress', (e) => {
     if (e.code == 'Enter') {
         onAddList();
     }
-})
+});
 
 // input text를 받아와서 list에 추가하는 method
 function onAddList() {
@@ -26,6 +26,7 @@ function onAddList() {
     createItem(text);
     input.value='';
     input.focus();
+    scrollToEnd();
 }
 
 function createItem(text) {
@@ -50,3 +51,7 @@ function createItem(text) {
     });
 }
 
+function scrollToEnd() {
+    let lastList = list.lastChild;
+    lastList.scrollIntoView();
+}
