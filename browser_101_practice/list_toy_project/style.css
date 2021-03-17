@@ -12,8 +12,7 @@ button {
 }
 
 .wrapper {
-    background: rgb(238,174,202);
-    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: #4CC87E;
     max-width: 600px;
     margin: 20px auto;
     border-radius: 50px;
@@ -24,11 +23,10 @@ button {
     font-size: 40px;
     margin: 0;
     padding: 20px;
-    color: white;
 }
 
 .container {
-    background-color: #f5f7fa;
+    background-color:#AEE5C4;
     height: 500px;
     overflow: auto;
 }
@@ -37,6 +35,10 @@ button {
     list-style: none;
     font-size: 20px;
     padding: 10px 50px;;
+}
+
+.done {
+    text-decoration: #029B40 line-through;
 }
 
 .divider {
@@ -48,6 +50,15 @@ button {
 .trash {
     position: sticky;
     left: 100%;
+    padding: 0;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+}
+
+.check {
+    position: sticky;
+    left: 81%;
     padding: 0;
     width: 27px;
     height: 27px;

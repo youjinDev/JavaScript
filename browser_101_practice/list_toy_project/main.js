@@ -9,13 +9,17 @@ addBtn.addEventListener('click', (e) => {
     onAddList();
 });
 
+/*
+* keypress는 deprecated 되었지만
+* keydown event 사용시 한글 입력 중복 이벤트 발생하는 오류가 있음
+*/
+
 input.addEventListener('keypress', (e) => {
     if (e.code == 'Enter') {
         onAddList();
     }
 });
 
-// input text를 받아와서 list에 추가하는 method
 function onAddList() {
     let text = input.value;
     if (text === '') {
@@ -32,7 +36,11 @@ function onAddList() {
 function createItem(text) {
     let newList = document.createElement('li');
     let newImg = document.createElement('img');
+    let newImg2 = document.createElement('img');
     let newLine = document.createElement('div');
+
+    newImg2.setAttribute('src', 'img/check.png');
+    newImg2.setAttribute('class', 'check');
 
     newImg.setAttribute('src', 'img/garbage.png');
     newImg.setAttribute('class', 'trash');
@@ -42,6 +50,7 @@ function createItem(text) {
     newList.innerText = text;
 
     newList.appendChild(newImg);
+    newList.appendChild(newImg2);
     newList.appendChild(newLine);
 
     list.appendChild(newList);
@@ -49,6 +58,10 @@ function createItem(text) {
     newImg.addEventListener('click', () => {
         list.removeChild(newList);
     });
+
+    newImg2.addEventListener('click', () => {
+        newList.classList.toggle('done');
+    })
 }
 
 function scrollToEnd() {
