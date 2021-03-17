@@ -55,7 +55,7 @@ console.clear();
         };
     
         inner();
-        console.log(a); // 1
+        console.log(a); // 2
     };
     
     outer();
@@ -75,8 +75,27 @@ btn.addEventListener('click', () => {
         let counter = count.innerHTML;
         console.log(counter); // 처음 한 번 눌렀을 때 0
         counter++;
-        console.log(counter);
+        console.log(counter); // 1
         return counter;
     }
 
 });
+
+console.clear();
+
+const say = 'Hoisting?';
+console.log(say);
+const num = 10;
+
+{
+// say의 TDZ 시작
+console.log(num); // 10
+
+// 만약 const가 hoisting이 되지 않는다면, say는 'Hoisting?'이 출력되어야 함
+// Hoisting 되어 const say; 이 상태로 TDZ. TDZ는 초기화 이전의 변수 접근을 막는다
+console.log(say); // referenceError (메모리 할당이 아직)
+
+// say의 TDZ 끝
+const say = 'Hello'; // declaration and initialize
+console.log(say); // Hello
+}
