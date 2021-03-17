@@ -61,6 +61,7 @@ function createItem(text) {
 
     newImg2.addEventListener('click', () => {
         newList.classList.toggle('done');
+        console.log(newList);
     })
 }
 
