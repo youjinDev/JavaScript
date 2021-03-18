@@ -33,36 +33,36 @@ function onAddList() {
     scrollToEnd();
 }
 
+let id = 0;
 function createItem(text) {
+
     let newList = document.createElement('li');
-    let newImg = document.createElement('img');
-    let newImg2 = document.createElement('img');
-    let newLine = document.createElement('div');
+    newList.setAttribute('data-id', id);
 
-    newImg2.setAttribute('src', 'img/check.png');
-    newImg2.setAttribute('class', 'check');
-
-    newImg.setAttribute('src', 'img/garbage.png');
-    newImg.setAttribute('class', 'trash');
-    newLine.setAttribute('class', 'divider');
-
-    // inerHTML이나 textContent 쓰면 안되더라... 왜지
-    newList.innerText = text;
-
-    newList.appendChild(newImg);
-    newList.appendChild(newImg2);
-    newList.appendChild(newLine);
+    newList.innerHTML = `${text}
+    <img src="img/check.png" class="check">
+    <img src="img/garbage.png" class="trash">
+    <div class = "divider"></div>
+    `;
 
     list.appendChild(newList);
+    id++;
 
-    newImg.addEventListener('click', () => {
-        list.removeChild(newList);
+    newList.addEventListener('click', (e) => {
+        if(!(e.target.className == 'trash' || e.target.className == 'check')) {
+            return;
+        }
+        
+        if (e.target.className == 'trash') {
+            list.removeChild(newList);
+        }
+
+        if (e.target.className == 'check') {
+            newList.classList.toggle('done');
+        }
     });
 
-    newImg2.addEventListener('click', () => {
-        newList.classList.toggle('done');
-        console.log(newList);
-    })
+    return newList;
 }
 
 function scrollToEnd() {

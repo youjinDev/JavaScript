@@ -1,89 +1,89 @@
 /* global */
 
 body {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 button {
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .wrapper {
-    background: #4CC87E;
-    max-width: 600px;
-    margin: 20px auto;
-    border-radius: 50px;
+  background: #4cc87e;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 50px;
 }
 
 .header {
-    text-align: center;
-    font-size: 40px;
-    margin: 0;
-    padding: 20px;
+  text-align: center;
+  font-size: 40px;
+  margin: 0;
+  padding: 20px;
 }
 
 .container {
-    background-color:#AEE5C4;
-    height: 500px;
-    overflow: auto;
+  background-color: #aee5c4;
+  height: 500px;
+  overflow: auto;
 }
 
 .list {
-    list-style: none;
-    font-size: 20px;
-    padding: 10px 50px;;
+  list-style: none;
+  font-size: 20px;
+  padding: 10px 50px;
 }
 
 .done {
-    text-decoration: #029B40 line-through;
+  color: whitesmoke;
 }
 
 .divider {
-    height: 1px;
-    background-color: rgb(230, 227, 227);
-    margin: 10px;
+  height: 1px;
+  background-color: rgb(230, 227, 227);
+  margin: 10px;
 }
 
 .trash {
-    position: sticky;
-    left: 100%;
-    padding: 0;
-    width: 27px;
-    height: 27px;
-    cursor: pointer;
+  position: sticky;
+  left: 100%;
+  padding: 0;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
 }
 
 .check {
-    position: sticky;
-    left: 81%;
-    padding: 0;
-    width: 27px;
-    height: 27px;
-    cursor: pointer;
+  position: sticky;
+  left: 81%;
+  padding: 0;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
 }
 
 .input {
-    width: 600px;
-    padding: 0;
-    margin: 0;
-    border: 1px;
-    height: 50px;
-    font-size: 20px;
+  width: 600px;
+  padding: 0;
+  margin: 0;
+  border: 1px;
+  height: 50px;
+  font-size: 20px;
 }
 
 .footer {
-    padding: 20px;
-    text-align: center;
+  padding: 20px;
+  text-align: center;
 }
 
 .plus {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .btn.add {
-    margin: auto 0;
+  margin: auto 0;
 }
