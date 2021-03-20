@@ -204,28 +204,4 @@ console.clear();
     user.name = '장발장';
     console.log(user.name); //장발장
     console.log(user._name); //장발장 _프로퍼티는 객체 내부에서만 활용하는 것이 관습
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

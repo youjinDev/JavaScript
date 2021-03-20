@@ -1,0 +1,33 @@
+/* section {
+  position: absolute;
+} */
+
+.container {
+  position: relative;
+  width: 1000px;
+  height: 700px;
+  margin: auto;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.play {
+  background-color: blue;
+}
+
+.timer {
+  background-color: blueviolet;
+}
+
+.counter {
+  background-color: brown;
+}
+
+.playground {
+  background-color: burlywood;
+}

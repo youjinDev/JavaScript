@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <img src="carrot/img/background.png" alt="background" class="background">
+
+        <!-- play Btn -->
+        <section class="play">
+            <button class="play__btn">
+                <i class="fas fa-play"></i>
+            </button>
+        </section>
+
+        <section class="timer">
+            <div class="wrapper__timer">
+                <span>여기에 남은 시간 표시</span>
+            </div>
+        </section>
+
+        <section class="counter">
+            <div class="count">남은 당근 갯수 표시</div>
+        </section>
+
+        <!-- 여기에 당근과 벌레들이 뿌려지고, 팝업창이 띄워짐 -->
+        <section class="playground">
+            <img src="carrot/img/carrot.png" alt="">
+            <img src="carrot/img/carrot.png" alt="">
+            <img src="carrot/img/carrot.png" alt="">
+            <div class="popup">
+                <button class="restrat__btn">
+                    <i class="fas fa-undo-alt"></i>
+                </button>
+                <p>RESTART?</p>
+            </div>
+        </section>
+    </div>
+    
+</body>
+</html>
