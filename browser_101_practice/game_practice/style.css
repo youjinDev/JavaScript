@@ -19,6 +19,7 @@
 
 body {
   background-color: snow;
+  margin: 0;
 }
 
 section {
@@ -45,7 +46,7 @@ p {
   position: relative;
   width: 1200px;
   height: 700px;
-  margin: auto;
+  margin: 0 0;
 }
 
 .background__img {
@@ -106,15 +107,24 @@ p {
 
 /* section : playground*/
 .section__playground {
+  position: relative;
+  /* background-color: yellow; */
   height: 55%;
+  overflow: hidden;
 }
 
 .car {
   position: absolute;
   width: 100px;
   height: 100px;
-  animation-duration: 4s;
-  animation-name: slidein;
+  /* animation-duration: 4s;
+  animation-name: slidein; */
+}
+
+.car.car__red {
+}
+
+.car.car__green {
 }
 
 /* @keyframes slidein {
