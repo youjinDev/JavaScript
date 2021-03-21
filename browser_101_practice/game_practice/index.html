@@ -10,35 +10,40 @@
 </head>
 <body>
     <div class="container">
-        <img src="carrot/img/background.png" alt="background" class="background">
+        <img src="carrot/img/background.png" alt="background" class="background__img">
 
         <!-- play Btn -->
-        <section class="play">
+        <section class="section__play">
             <button class="play__btn">
-                <i class="fas fa-play"></i>
+                <img src="carrot/img/play.png" alt="" class="play__img">
             </button>
         </section>
 
-        <section class="timer">
+        <section class="section__timer">
             <div class="wrapper__timer">
-                <span>여기에 남은 시간 표시</span>
+                <span class="timer">여기에 남은 시간 표시</span>
             </div>
         </section>
 
-        <section class="counter">
-            <div class="count">남은 당근 갯수 표시</div>
+        <section class="section__counter">
+            <div class="count">
+                <span class="counter">남은 개수 표시</span>
+            </div>
         </section>
 
-        <!-- 여기에 당근과 벌레들이 뿌려지고, 팝업창이 띄워짐 -->
-        <section class="playground">
-            <img src="carrot/img/carrot.png" alt="">
-            <img src="carrot/img/carrot.png" alt="">
-            <img src="carrot/img/carrot.png" alt="">
-            <div class="popup">
-                <button class="restrat__btn">
-                    <i class="fas fa-undo-alt"></i>
+        <!-- 여기에 자동차들이 뿌려지고, 팝업창이 띄워짐 -->
+        <section class="section__playground">
+            <img src="carrot/img/car--red.png" alt="" class="car car__red">
+            <img src="carrot/img/car--green.png" alt="" class="car car__green">
+            <img src="carrot/img/ambulance.png" alt="" class="car car__ambulance">
+            <img src="carrot/img/truck.png" alt="" class="car car__truck">
+
+            <div class="popup invisible">
+                <img src="carrot/img/accident.png" alt="" class="gameover__img">
+                <button class="restart__btn">
+                    <img src="carrot/img/replay.png" alt="" class="restart__img">
                 </button>
-                <p>RESTART?</p>
+                <p>Lose!<br/>RESTART?</p>
             </div>
         </section>
     </div>

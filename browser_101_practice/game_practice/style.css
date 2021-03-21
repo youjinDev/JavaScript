@@ -1,33 +1,158 @@
-/* section {
-  position: absolute;
-} */
+:root {
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+}
+
+/* Universal tags */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: snow;
+}
+
+section {
+  display: flex;
+  text-align: center;
+}
+
+button {
+  background-color: whitesmoke;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 25%;
+}
+
+p {
+  color: whitesmoke;
+  margin: 8px;
+}
 
 .container {
   position: relative;
-  width: 1000px;
+  width: 1200px;
   height: 700px;
   margin: auto;
 }
 
-.background {
+.background__img {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: -1;
 }
 
-.play {
-  background-color: blue;
+/* section : play */
+
+.section__play {
+  height: 15%;
+}
+
+.play__btn {
+  margin: auto;
+}
+
+.play__img {
+  width: 30px;
+  height: 30px;
+}
+
+/* section : timer */
+
+.section__timer {
+  height: 15%;
+}
+
+.wrapper__timer {
+  background-color: whitesmoke;
+  margin: auto;
+  width: 300px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
 }
 
 .timer {
-  background-color: blueviolet;
+  font-size: var(--font-medium);
 }
 
-.counter {
-  background-color: brown;
+/* section : counter */
+
+.section__counter {
+  height: 15%;
 }
 
-.playground {
-  background-color: burlywood;
+.count {
+  background-color: whitesmoke;
+  width: 200px;
+  height: 70px;
+  margin: auto;
+  text-align: center;
+  line-height: 70px;
+}
+
+/* section : playground*/
+.section__playground {
+  height: 55%;
+}
+
+.car {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  animation-duration: 4s;
+  animation-name: slidein;
+}
+
+/* @keyframes slidein {
+  to {
+    margin-left: 100%;
+  }
+
+  from {
+    margin-left: 0%;
+  }
+} */
+
+/* popup */
+
+.popup {
+  background-color: black;
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  border-radius: 25px;
+  opacity: 0.8;
+}
+
+.popup.invisible {
+  display: none;
+}
+
+.gameover__img {
+  display: block;
+  margin: 10px auto;
+  width: 60%;
+  height: 50%;
+}
+
+.restart__btn {
+}
+
+.restart__img {
+  width: 30px;
+  height: 30px;
 }
