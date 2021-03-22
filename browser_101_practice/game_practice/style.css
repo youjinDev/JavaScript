@@ -80,7 +80,7 @@ p {
 .wrapper__timer {
   background-color: whitesmoke;
   margin: auto;
-  width: 300px;
+  width: 200px;
   height: 70px;
   text-align: center;
   line-height: 70px;
@@ -98,7 +98,7 @@ p {
 
 .count {
   background-color: whitesmoke;
-  width: 200px;
+  width: 150px;
   height: 70px;
   margin: auto;
   text-align: center;
@@ -145,7 +145,7 @@ p {
   height: 300px;
   margin: auto;
   border-radius: 25px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .popup.invisible {
@@ -154,7 +154,7 @@ p {
 
 .gameover__img {
   display: block;
-  margin: 10px auto;
+  margin: 0 auto;
   width: 60%;
   height: 50%;
 }
