@@ -66,6 +66,14 @@ p {
   margin: auto;
 }
 
+.play__btn.invisible {
+  display: none;
+}
+
+.play__btn:hover {
+  transform: scale(1.1);
+}
+
 .play__img {
   width: 30px;
   height: 30px;
@@ -117,6 +125,7 @@ p {
   position: absolute;
   width: 100px;
   height: 100px;
+  cursor: pointer;
   /* animation-duration: 4s;
   animation-name: slidein; */
 }
@@ -160,6 +169,10 @@ p {
 }
 
 .restart__btn {
+}
+
+.restart__btn:hover {
+  transform: scale(1.1);
 }
 
 .restart__img {
