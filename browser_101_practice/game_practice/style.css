@@ -39,7 +39,8 @@ button {
 
 p {
   color: whitesmoke;
-  margin: 8px;
+  margin: 20px;
+  font-size: var(--font-large);
 }
 
 .container {
@@ -169,6 +170,7 @@ p {
 }
 
 .restart__btn {
+  margin-top: 8px;
 }
 
 .restart__btn:hover {
