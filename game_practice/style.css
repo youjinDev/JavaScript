@@ -1,0 +1,156 @@
+:root {
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 20px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+
+  /* color */
+}
+
+/* Universal tags */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: snow;
+  margin: 0;
+}
+
+button {
+  background-color: whitesmoke;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 25%;
+  font-size: var(--font-medium);
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+p {
+  color: whitesmoke;
+  margin: 0;
+  font-size: var(--font-large);
+}
+
+/* game */
+
+.game__container {
+  position: flex;
+  flex-direction: column;
+  width: 1200px;
+  height: 700px;
+  margin: 0 auto;
+  background: url(carrot/img/background.png) center/cover;
+}
+
+/* section : play button */
+
+.game__header {
+  display: flex;
+  flex-direction: column;
+  /* background-color: antiquewhite; */
+  align-items: center;
+}
+
+.play__btn {
+  margin-top: 10px;
+}
+
+.game__timer {
+  background-color: whitesmoke;
+  width: 200px;
+  height: 74px;
+  text-align: center;
+  line-height: 70px;
+  border: 2px solid black;
+  border-radius: 12px;
+  margin: 10px;
+  font-size: var(--font-large);
+}
+
+/* section : counter */
+
+.game__counter {
+  width: 50px;
+  height: 50px;
+  border: 2px solid aliceblue;
+  border-radius: 50%;
+  background-color: yellowgreen;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: aliceblue;
+}
+
+/* section : field*/
+
+.game__field {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  margin-top: 100px;
+}
+
+.car {
+  /* animation-duration: 4s;
+  animation-name: slidein; */
+}
+
+.car:hover {
+  transform: scale(1.1);
+}
+
+.car.car__red {
+}
+
+.car.car__green {
+}
+
+/* @keyframes slidein {
+  to {
+    margin-left: 100%;
+  }
+
+  from {
+    margin-left: 0%;
+  }
+} */
+
+/* popup */
+
+.popup {
+  background-color: #00000090;
+  width: 500px;
+  height: 250px;
+  transform: translateY(-400px);
+  border-radius: 25px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.popup.invisible {
+  display: none;
+}
+
+.restart__btn {
+  margin-top: 32px;
+}
+
+.message {
+  font-size: var(--font-medium);
+  margin: 12px;
+}
