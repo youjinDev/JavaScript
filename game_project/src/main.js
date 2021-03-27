@@ -1,4 +1,5 @@
 'use strict';
+import PopUp from './popup.js';
 
 const GREEN_CAR_COUNT = 10;
 const RED_CAR_COUNT = 5;
@@ -14,18 +15,24 @@ const win_sound = new Audio('carrot/sound/game_win.mp3');
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
 const playBtn = document.querySelector('.play__btn');
-const restartBtn = document.querySelector('.restart__btn');
+// const restartBtn = document.querySelector('.restart__btn');
 const counter = document.querySelector('.game__counter');
-const popup = document.querySelector('.popup');
-const p = document.querySelector('.message');
+
+// const popup = document.querySelector('.popup');
+// const message = document.querySelector('.message');
+
 const timerDisplay = document.querySelector('.game__timer');
-const message = document.querySelector('.message');
 const btnImg = document.querySelector('.play__btn>.fas');
 
 let started = false;
 let score = 0;
 let setTimer = undefined;
 
+const gameFinishBanner = new PopUp();
+
+gameFinishBanner.setClickListener(() => {
+    initGame();
+})
 
 // Start play button
 playBtn.addEventListener('click', () => {
@@ -43,7 +50,6 @@ function stopGame() {
     started = false;
     finishGame(false);
     stopGameTimer(setTimer);
-    showPopup('');
 
 }
 
@@ -66,6 +72,11 @@ function stopSound(sound) {
 }
 
 function initGame() {
+
+    showStartButton();
+
+    started = true;
+
     //bgm 켜기
     playSound(back_sound);
 
@@ -75,7 +86,7 @@ function initGame() {
     // 아이템 추가
     createItems('car green', GREEN_CAR_COUNT, './carrot/img/car--green.png');
     createItems('car red', RED_CAR_COUNT, './carrot/img/car--red.png');
-    createItems('car truck', RED_CAR_COUNT, './carrot/img/car--truck.png');
+    createItems('car truck', TRUCK_COUNT, './carrot/img/car--truck.png');
     
     // 카운터, 타이머 초기화
     resetCounter();
@@ -152,10 +163,10 @@ function finishGame(win) {
     stopGameTimer(setTimer);
 
     if (win) {
-        showPopup('YOU WON🤩');
+        gameFinishBanner.showWithText('YOU WON🤩');
         playSound(win_sound);
     } else {
-        showPopup('YOU LOSE🤬');
+        gameFinishBanner.showWithText('YOU LOSE🤬');
         playSound(alert_sound);
     }
 }
@@ -166,15 +177,6 @@ function hideStartButton() {
 
 function showStartButton() {
     playBtn.style.visibility = 'visible';
-}
-
-function showPopup(msg) {
-    popup.classList.remove('invisible');
-    message.innerHTML = msg;
-}
-
-function hidePopup() {
-    popup.classList.add('invisible');
 }
 
 field.addEventListener('click', (e) => {
@@ -195,9 +197,3 @@ field.addEventListener('click', (e) => {
     }
 });
 
-restartBtn.addEventListener('click', () => {
-    started = true;
-    showStartButton();
-    initGame();
-    hidePopup();
-})
