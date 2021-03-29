@@ -1,16 +1,13 @@
 'use strict';
+
 import PopUp from './popup.js';
 import Field from './field.js';
-
+import * as sound from './sound.js'
 
 const GREEN_CAR_COUNT = 10;
 const RED_CAR_COUNT = 5;
-const TRUCK_COUNT = 10;
+const TRUCK_COUNT = 5;
 const TIME = 5;
-
-const alert_sound = new Audio('carrot/sound/alert.wav');
-const back_sound = new Audio('carrot/sound/bg.mp3');
-const win_sound = new Audio('carrot/sound/game_win.mp3');
 
 const playBtn = document.querySelector('.play__btn');
 const counter = document.querySelector('.game__counter');
@@ -29,7 +26,6 @@ const gameField = new Field(RED_CAR_COUNT, GREEN_CAR_COUNT, TRUCK_COUNT);
 gameField.setClickListener(onItemClick);
 
 function onItemClick(itemType) {
-    console.log(itemType);
 
     if(!started) {
         return;
@@ -58,7 +54,7 @@ playBtn.addEventListener('click', () => {
 
 function stopGame() {
     started = false;
-    stopSound(back_sound);
+    sound.stopBackground();
     hideStartButton();
     gameFinishBanner.showWithText(' ');
     stopGameTimer();
@@ -66,18 +62,9 @@ function stopGame() {
 
 function startGame() {
     started = true;
-    playSound(back_sound);
+    sound.playBackground();
     initGame();
     changeBtnImg();
-}
-
-function playSound(sound) {
-    sound.currentTime = 0;
-    sound.play();
-}
-
-function stopSound(sound) {
-    sound.pause();
 }
 
 function initGame() {
@@ -108,7 +95,7 @@ function startTimer() {
 
         if (remainTime === 0 ) {
             finishGame(false);
-            playSound(alert_sound);
+            sound.playAlert();
             return;
             }
     }, 1000)
@@ -121,13 +108,13 @@ function stopGameTimer() {
 function finishGame(win) {
     started = false;
     stopGameTimer();
-    stopSound(back_sound);
+    sound.stopBackground();
     if (win) {
         gameFinishBanner.showWithText('YOU WON🤩');
-        playSound(win_sound);
+        sound.playWin();
     } else {
         gameFinishBanner.showWithText('YOU LOSE🤬');
-        playSound(alert_sound);
+        sound.playAlert();
     }
 }
 

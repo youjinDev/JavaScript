@@ -1,14 +1,15 @@
 'use strict';
 
+import * as sound from './sound.js'
+
 const IMG_SIZE = 100;
-const right_car_sound = new Audio('carrot/sound/carrot_pull.mp3');
 
 export default class Field {
     constructor(redCarCount, greenCarCount, truckCount) {
         this.redCarCount = redCarCount;
         this.greenCarCount = greenCarCount;
         this.truckCarCount = truckCount;
-
+        
         this.field = document.querySelector('.game__field');
         this.fieldRect = this.field.getBoundingClientRect();
         // this binding을 통해 onclick이 호출되었을 때, 그 안의 onItemClick의 this가 클래스를 가리킨다고 알려줘야함
@@ -53,10 +54,10 @@ export default class Field {
         }
     }
 
-    onClick(event) {
+    onClick = event => {
         const target = event.target;
         if (target.matches('.car.red')) {
-            playSound(right_car_sound);
+            sound.playRight();
             target.remove();
             this.onItemClick && this.onItemClick('carRight');
         } else if (target.matches('.car.green') || target.matches('.car.truck')) {
@@ -67,9 +68,4 @@ export default class Field {
 
 function randomNum (min, max) {
     return Math.random() * (max - min) + min;
-}
-
-function playSound(sound) {
-    sound.currentTime = 0;
-    sound.play();
 }
