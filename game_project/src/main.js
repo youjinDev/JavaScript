@@ -1,35 +1,33 @@
 'use strict';
 
-import Game from './game.js';
+import GameBuilder from './game.js';
 import PopUp from './popup.js';
 
-const GREEN_CAR_COUNT = 10;
-const RED_CAR_COUNT = 5;
-const TRUCK_COUNT = 5;
-const TIME = 5;
+// Builder Pattern
+const game = new GameBuilder()
+    .withGameDuration(5)
+    .withRedCarCount(5)
+    .withGreenCarCount(5)
+    .withTruckCount(5)
+    .build();
 
-const gameFinishBanner = new PopUp();
-gameFinishBanner.setClickListener(() => {
-    game.start();
-});
-
-const game = new Game(TIME, RED_CAR_COUNT, GREEN_CAR_COUNT, TRUCK_COUNT);
 game.setGameStopListener((reason) => {
     let message;
     switch(reason) {
         case 'win':
             message = '이겼습니다!🙌';
             break;
-        case 'cancle':
+        case 'cancel':
             message = ' ';
             break;
         case 'lose':
             message = '졌습니다!🤬'
             break;
     }
-
-    gameFinishBanner.showWithText(message);
-
+    gameFinishPopup.showWithText(message);
 });
 
-
+const gameFinishPopup = new PopUp();
+gameFinishPopup.setClickListener(() => {
+    game.start();
+});

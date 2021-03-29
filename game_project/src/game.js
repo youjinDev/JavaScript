@@ -3,7 +3,39 @@
 import Field from './field.js';
 import * as sound from './sound.js'
 
-export default class Game {
+export default class GameBuilder {
+    withGameDuration(time) {
+        this.gameDuration = time;
+        return this;
+    }
+
+    withRedCarCount(redCarCount) {
+        this.redCarCount = redCarCount;
+        return this;
+    }
+
+    withGreenCarCount(greenCarCount) {
+        this.greenCarCount = greenCarCount;
+        return this;
+    }
+
+    withTruckCount(truckCount) {
+        this.truckCount = truckCount;
+        return this;
+    }
+
+    build() {
+        console.log(this);
+        return new Game(
+            this.gameDuration,
+            this.redCarCount,
+            this.greenCarCount,
+            this.truckCount
+        );
+    }
+}
+
+class Game {
     constructor(gameDuration, redCarCount, greenCarCount, truckCount) {
         this.gameDuration = gameDuration;
         this.redCarCount = redCarCount;
@@ -16,7 +48,7 @@ export default class Game {
         this.playBtn = document.querySelector('.play__btn');
 
         this.playBtn.addEventListener('click', () => {
-            if (this.started) {
+            if (this.isStarted) {
                 this.stop();
             } else {
                 this.start();
@@ -27,7 +59,7 @@ export default class Game {
         this.gameField.setClickListener(this.onItemClick);
 
         this.score = 0;
-        this.started = false;
+        this.isStarted = false;
         this.setTimer = undefined;
     }
 
@@ -43,22 +75,24 @@ export default class Game {
     }
 
     start() {
-        this.started = true;
+        this.isStarted = true;
+        console.log(this.isStarted);
         this.init();
         this.changeBtnImg();
         sound.playBackground();
     }
 
     stop() {
-        this.started = false;
+        console.log(this.isStarted);
+        this.isStarted = false;
         this.hideStartButton();
         this.stopGameTimer();
         sound.stopBackground();
-        this.onGameStop && this.onGameStop('cancle');
+        this.onGameStop && this.onGameStop('cancel');
     }
 
     finish(win) {
-        this.started = false;
+        this.isStarted = false;
         this.stopGameTimer();
         sound.stopBackground();
         if (win) {
@@ -71,7 +105,7 @@ export default class Game {
     }
     
     onItemClick = itemType => {
-        if(!this.started) {
+        if(!this.isStarted) {
             return;
         }
     
@@ -117,7 +151,7 @@ export default class Game {
                 this.finish(false);
                 sound.playAlert();
                 return;
-                }
+            }
         }, 1000)
     }
     
