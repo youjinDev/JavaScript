@@ -12,8 +12,11 @@ export default class Field {
         
         this.field = document.querySelector('.game__field');
         this.fieldRect = this.field.getBoundingClientRect();
+        // 클래스 안의 멤버함수를 다른 콜백으로 전달할 때는 this 정보가 함께 전달되지 않는다
+        // 따라서 (event) => this.onClick(event) 이렇게 arrow function으로 넘겨주거나
+        // 멤버 함수를 정의할 때 arrow function 으로 정의한다
         // this binding을 통해 onclick이 호출되었을 때, 그 안의 onItemClick의 this가 클래스를 가리킨다고 알려줘야함
-        this.field.addEventListener('click', (event) => this.onClick(event));
+        this.field.addEventListener('click', this.onClick);
     }
 
     init() {
@@ -54,7 +57,8 @@ export default class Field {
         }
     }
 
-    onClick = event => {
+    // arrow function
+    onClick = (event) => {
         const target = event.target;
         if (target.matches('.car.red')) {
             sound.playRight();

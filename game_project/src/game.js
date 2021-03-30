@@ -101,7 +101,6 @@ class Game {
             sound.playAlert();
         }
         this.onGameStop && this.onGameStop(win? 'win' : 'lose');
-
     }
     
     onItemClick = itemType => {
