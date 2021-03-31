@@ -2,13 +2,17 @@
 
 import * as sound from './sound.js'
 
-const IMG_SIZE = 100;
+const IMG_SIZE = 90;
+const RED_CAR_COUNT = 5;
+const GREEN_CAR_COUNT = 5;
+const TRUCK_CAR_COUNT = 5;
+
 
 export default class Field {
-    constructor(redCarCount, greenCarCount, truckCount) {
-        this.redCarCount = redCarCount;
-        this.greenCarCount = greenCarCount;
-        this.truckCarCount = truckCount;
+    constructor(RED_CAR_COUNT, GREEN_CAR_COUNT, TRUCK_CAR_COUNT) {
+        this.redCarCount = RED_CAR_COUNT;
+        this.greenCarCount = GREEN_CAR_COUNT;
+        this.truckCarCount = TRUCK_CAR_COUNT;
         
         this.field = document.querySelector('.game__field');
         this.fieldRect = this.field.getBoundingClientRect();
@@ -19,12 +23,25 @@ export default class Field {
         this.field.addEventListener('click', this.onClick);
     }
 
-    init() {
+    updateField(number) {
+        this.redCarCount = this.redCarCount + number;
+        this.greenCarCount = this.greenCarCount + number;
+        this.truckCarCount = this.truckCarCount + number;
+    }
+
+    initField() {
         this.field.innerHTML = '';
         this._createItems('car green', this.greenCarCount, './carrot/img/car--green.png');
         this._createItems('car red', this.redCarCount, './carrot/img/car--red.png');
         this._createItems('car truck', this.truckCarCount, './carrot/img/car--truck.png');
     }
+
+    // resetField() {
+    //     this.field.innerHTML = '';
+    //     this._createItems('car green', RED_CAR_COUNT, './carrot/img/car--green.png');
+    //     this._createItems('car red', GREEN_CAR_COUNT, './carrot/img/car--red.png');
+    //     this._createItems('car truck', TRUCK_CAR_COUNT, './carrot/img/car--truck.png');
+    // }
 
     setClickListener(onItemClick) {
         this.onItemClick = onItemClick;

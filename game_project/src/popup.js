@@ -5,15 +5,27 @@ export default class Popup {
         this.popUp = document.querySelector('.popup');
         this.popUpText = document.querySelector('.message');
         this.popUpRestart = document.querySelector('.restart__btn');
+        this.popUpNextStage = document.querySelector('.next__btn');
         
         this.popUpRestart.addEventListener('click', () => {
             this.onClick && this.onClick();
             this.hide();
         });
+
+        this.popUpNextStage.addEventListener('click', () => {
+            //game next level로 넘어가야 함
+            this.onClickNextLevel && this.onClickNextLevel();
+            this.hide();
+        });
     }
 
-    setClickListener(onClick) {
+    setRestartClickListener(onClick) {
         this.onClick = onClick;
+        console.log(this);
+    }
+
+    setNextClickListener(onClickNextLevel) {
+        this.onClickNextLevel = onClickNextLevel;
     }
 
     showWithText(text) {
