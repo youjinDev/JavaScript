@@ -13,15 +13,13 @@ export default class Popup {
         });
 
         this.popUpNextStage.addEventListener('click', () => {
-            //game next level로 넘어가야 함
-            this.onClickNextLevel && this.onClickNextLevel();
+            this.onClick && this.onClick();
             this.hide();
         });
     }
 
-    setRestartClickListener(onClick) {
+    setClickListener(onClick) {
         this.onClick = onClick;
-        console.log(this);
     }
 
     setNextClickListener(onClickNextLevel) {

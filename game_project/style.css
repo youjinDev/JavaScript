@@ -10,8 +10,6 @@
   --weight-bold: 700;
   --weight-semi-bold: 600;
   --weight-regular: 400;
-
-  /* color */
 }
 
 /* Universal tags */
@@ -121,28 +119,13 @@ p {
 }
 
 .car {
-  /* animation-duration: 10s;
-  animation-name: slidein; */
+  animation-duration: 10s;
+  animation-name: slidein;
 }
 
 .car:hover {
   transform: scale(1.1);
 }
-
-.car.car__red {
-}
-
-.car.car__green {
-}
-
-/* @keyframes slidein {
-  to {
-    margin-left: 100%;
-  }
-
-  from {
-    margin-left: 0%;
-  } */
 
 /* popup */
 

@@ -1,8 +1,8 @@
 
 const alert_sound = new Audio('carrot/sound/alert.wav');
 const back_sound = new Audio('carrot/sound/bg.mp3');
-const win_sound = new Audio('carrot/sound/game_win.mp3');
-const right_car_sound = new Audio('carrot/sound/carrot_pull.mp3');
+const win_sound = new Audio('carrot/sound/game_win.wav');
+const right_car_sound = new Audio('carrot/sound/car_pickup.wav');
 
 function playSound(sound) {
     sound.currentTime = 0;

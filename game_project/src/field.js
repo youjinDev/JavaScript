@@ -3,9 +3,6 @@
 import * as sound from './sound.js'
 
 const IMG_SIZE = 90;
-const RED_CAR_COUNT = 5;
-const GREEN_CAR_COUNT = 5;
-const TRUCK_CAR_COUNT = 5;
 
 
 export default class Field {
@@ -19,14 +16,13 @@ export default class Field {
         // 클래스 안의 멤버함수를 다른 콜백으로 전달할 때는 this 정보가 함께 전달되지 않는다
         // 따라서 (event) => this.onClick(event) 이렇게 arrow function으로 넘겨주거나
         // 멤버 함수를 정의할 때 arrow function 으로 정의한다
-        // this binding을 통해 onclick이 호출되었을 때, 그 안의 onItemClick의 this가 클래스를 가리킨다고 알려줘야함
+        // 이러한 this binding을 통해 onclick이 호출되었을 때, 그 안의 onItemClick의 this가 클래스를 가리킨다고 알려줘야함
         this.field.addEventListener('click', this.onClick);
     }
 
-    updateField(number) {
-        this.redCarCount = this.redCarCount + number;
-        this.greenCarCount = this.greenCarCount + number;
-        this.truckCarCount = this.truckCarCount + number;
+    updateField(itemCount) {
+        this.greenCarCount = itemCount;
+        this.truckCarCount = itemCount;
     }
 
     initField() {
@@ -35,13 +31,6 @@ export default class Field {
         this._createItems('car red', this.redCarCount, './carrot/img/car--red.png');
         this._createItems('car truck', this.truckCarCount, './carrot/img/car--truck.png');
     }
-
-    // resetField() {
-    //     this.field.innerHTML = '';
-    //     this._createItems('car green', RED_CAR_COUNT, './carrot/img/car--green.png');
-    //     this._createItems('car red', GREEN_CAR_COUNT, './carrot/img/car--red.png');
-    //     this._createItems('car truck', TRUCK_CAR_COUNT, './carrot/img/car--truck.png');
-    // }
 
     setClickListener(onItemClick) {
         this.onItemClick = onItemClick;
@@ -74,7 +63,7 @@ export default class Field {
         }
     }
 
-    // arrow function
+    // arrow function은 내부 자체적인 this가 없기 때문에 가장 가까운 scope를 가리킨다
     onClick = (event) => {
         const target = event.target;
         if (target.matches('.car.red')) {

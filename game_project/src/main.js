@@ -12,15 +12,15 @@ const game = new GameBuilder()
     .build();
     
 const gameFinishPopup = new PopUp();
-gameFinishPopup.setRestartClickListener(() => {
+gameFinishPopup.setClickListener(() => {
         game.start();
 });
 
-game.setGameStopListener((reason) => {
+game.setGameStopListener((reason, totalScore) => {
     let message;
     switch(reason) {
         case 'win':
-            message = 'WIN!🙌';
+            message = '🙌WIN!🙌';
             gameFinishPopup.popUpRestart.style.visibility = 'hidden';
             gameFinishPopup.popUpNextStage.style.visibility = 'visible';
             break;
@@ -30,14 +30,10 @@ game.setGameStopListener((reason) => {
             gameFinishPopup.popUpRestart.style.visibility = 'visible';
             break;
         case 'lose':
-            message = 'LOSE!🤬';
+            message = `🤬LOSE!🤬</br>${totalScore}점`;
             gameFinishPopup.popUpRestart.style.visibility = 'visible';
             gameFinishPopup.popUpNextStage.style.visibility = 'hidden';
             break;
     }
     gameFinishPopup.showWithText(message);
-});
-
-gameFinishPopup.setNextClickListener(() => {
-    game.start();
 });

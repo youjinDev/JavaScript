@@ -3,10 +3,6 @@
 import Field from './field.js';
 import * as sound from './sound.js'
 
-const RED_CAR_COUNT = 5;
-const GREEN_CAR_COUNT = 5;
-const TRUCK_CAR_COUNT = 5;
-
 export default class GameBuilder {
     withGameDuration(time) {
         this.gameDuration = time;
@@ -29,7 +25,6 @@ export default class GameBuilder {
     }
 
     build() {
-        console.log(this);
         return new Game(
             this.gameDuration,
             this.redCarCount,
@@ -54,7 +49,7 @@ class Game {
 
         this.playBtn.addEventListener('click', () => {
             if (this.isStarted) {
-                this.stop();
+                this.stop('cancel');
             } else {
                 this.start();
             }
@@ -63,6 +58,7 @@ class Game {
         this.gameField = new Field(redCarCount, greenCarCount, truckCount);
         this.gameField.setClickListener(this.onItemClick);
 
+        this.level = 1;
         this.score = 0;
         this.totalScore = 0;
         this.isStarted = false;
@@ -73,22 +69,17 @@ class Game {
         this.onGameStop = onGameStop;
     }
 
+    getRedCarCount() {
+        return this.redCarCount;
+    }
+
     nextStage() { 
-        this.redCarCount = this.redCarCount + 1;
-        this.greenCarCount = this.greenCarCount + 1;
-        this.truckCount = this.truckCount + 1;
+        this.level++;
+        this.greenCarCount += this.level;
+        this.truckCount += this.level;
     }
 
-    // next level
     start() {
-        this.isStarted = true;
-        this.init();
-        this.changeBtnImg();
-        sound.playBackground();
-    }
-
-    // reset btn
-    startInit() {
         this.isStarted = true;
         this.init();
         this.changeBtnImg();
@@ -102,53 +93,56 @@ class Game {
         this.startTimer();
     }
 
-    stop() {
+    stop(reason) {
         this.isStarted = false;
+        sound.stopBackground();
         this.hideStartButton();
         this.stopGameTimer();
-        sound.stopBackground();
-        this.resetTotalScore();
-        this.onGameStop && this.onGameStop('cancel');
-    }
-
-    finish(win) {
-        this.isStarted = false;
-        this.hideStartButton();
-        this.stopGameTimer();
-        sound.stopBackground();
-        if (win) {
-            sound.playWin();
-        } else {
-            sound.playAlert();
-            this.resetTotalScore();
+        switch(reason) {
+            case 'win':
+                sound.playWin();
+                this.onGameStop && this.onGameStop('win', this.totalScore);
+                break;
+            case 'cancel':
+                this.onGameStop && this.onGameStop('cancel', this.totalScore);
+                this.resetTotalScore();
+                this.initStage();
+                break;
+            case 'lose':
+                sound.playAlert();
+                
+                this.onGameStop && this.onGameStop('lose', this.totalScore);
+                this.resetTotalScore();
+                this.initStage();
+                break;
         }
-        this.onGameStop && this.onGameStop(win? 'win' : 'lose');
     }
 
     resetTotalScore() {
-        this.scoreSum.innerHTML = '0';
         this.totalScore = 0;
+        this.scoreSum.innerHTML = this.totalScore;
     }
     
     onItemClick = itemType => {
         if(!this.isStarted) {
             return;
         }
-    
+
         if (itemType === 'carRight') {
-            this.totalScore++;
             this.score++;
+            this.totalScore++;
             this.scoreSum.innerHTML = this.totalScore;
             this.counter.innerHTML = this.redCarCount - this.score;
             // 시간 내 성공하면
             if (this.score === this.redCarCount) {
-                this.finish(true);
+                this.stop('win');
                 this.nextStage();
-                this.gameField.updateField(1);
+                this.gameField.updateField(this.greenCarCount++);
             }
         } else if (itemType === 'carWrong') {
-            this.finish(false);
+            this.stop('lose');
             this.resetTotalScore();
+            this.initStage();
             return;
         }
     }
@@ -173,29 +167,35 @@ class Game {
 
     startTimer() {
         let remainTime = this.gameDuration;
-        this.timerDisplay.innerHTML = `0:${remainTime}`;
+        this.updateTimerText(remainTime);
         
         this.setTimer = setInterval(() => {
             --remainTime;
-            this.timerDisplay.innerHTML = `0:${remainTime}`;
-            // Time Out
+            this.updateTimerText(remainTime);
+            // Time Out Lose
             if (remainTime === 0 ) {
-                this.finish(false);
+                this.stop('lose');
                 sound.playAlert();
+                this.initStage();
                 return;
             }
         }, 1000)
+    }
+
+    updateTimerText(remainTime) {
+        this.timerDisplay.innerHTML = `0:${remainTime}`;
     }
     
     stopGameTimer() {
         clearInterval(this.setTimer);
     }
-
     
-
-
-
-
-
-
+    initStage() {
+        this.redCarCount = 5;
+        this.greenCarCount = 5;
+        this.truckCount = 5;
+        this.level = 1;
+        this.totalScore = 0;
+        this.gameField.updateField(5);
+    }
 }
