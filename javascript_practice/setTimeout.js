@@ -21,7 +21,7 @@ function printNumbers_setTimeout(from, to) {
             setTimeout(run, 1000);
         }
         from++;
-    }, 1000)
+    }, 1000);
 };
 
 printNumbers_setTimeout(1, 10);
