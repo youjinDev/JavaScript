@@ -18,7 +18,7 @@ function printNumbers_setTimeout(from, to) {
     let myTimer = setTimeout(function run() {
         console.log(from);
         if (from< to) {
-            setTimeout(run, 1000)
+            setTimeout(run, 1000);
         }
         from++;
     }, 1000)
@@ -33,6 +33,23 @@ let mySetTimer = setTimeout(function request() {
     if (requestFail) {
         delay *= 2;
     }
-
     mySetTimer = setTimeout(request, delay);
 }, delay);
+
+
+// No delay
+function printNumbers(from, to) {
+    let current = from;
+    function go() {
+        console.log(current);
+        if (current == to) {
+            clearInterval(timerId);
+        }
+        current++;
+    }
+
+    go(); // 1s delay 없이 바로 console 찍기
+    let timerId = setInterval(go, 1000);
+}
+
+printNumbers(5, 10);
