@@ -63,4 +63,10 @@ console.log(orderedByName);
 console.log(orderedByYear);
 console.log(staffs);
 
+console.clear();
 
+// 원본 배열을 변형하지 않으면서 push나 shift 없이 배열에 요소 추가하기
+const animals = ['토끼', '사자', '햄스터', '스컹크', '도롱뇽'];
+const newAnimals = ['개', ...animals, '뱀']; // = pop, shift
+console.log(newAnimals);
+console.log(animals);
