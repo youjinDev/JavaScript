@@ -32,6 +32,7 @@ const newArr = staffs.filter(staff => staff.age > 25);
 console.log(newArr);
 
 // 원본 배열 바꾸지 않고 복제하기
+
 const copiedArr = [...staffs];
 console.log(copiedArr);
 
@@ -39,6 +40,8 @@ const copiedArr2 = staffs.slice();
 console.log(copiedArr2);
 
 console.clear();
+
+// 배열 정렬하기
 
 function sortByName(a, b) {
     if (a.name === b.name) return 0;
