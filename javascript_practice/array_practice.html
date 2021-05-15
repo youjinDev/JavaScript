@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Practice</title>
+</head>
+<body>
+    <script>
+        const game = {
+            player : 'youjin',
+            hits: 2,
+            runs : 1,
+            errors : 0,
+        };
+        const total = {};
+        const stats = Object.keys(game); // 객체의 key를 배열로 반환
+        console.log(stats);
+        stats.forEach(elem => {
+            if (elem !== 'player') {
+                console.log(game[elem]); // stats만 출력하기
+            }
+        });
+
+        const dog = {
+            name : 'Dan',
+            color : 'white'
+        };
+        
+        const dogPair = Object.entries(dog); // ⭐ 객체를 key, val 값을 가지는 이차원 배열로 표현할 수 있다는 것 기억하기
+        function getName(dogPair) {
+            return dogPair.find(elem => elem[0] === 'name')[1];
+        }
+
+        const sections = ['shipping'];
+        function displayShipping(sections) {
+            // if (sections.indexOf('shipping')) { // 기대했던 값 : true
+            //     return true;
+            // }
+            // return false; // 실제 값 : false. 'shipping'의 인덱스가 0이기 때문에, if문이 거짓으로 판별됨
+            return sections.includes('shipping');
+        }
+
+        const fruits = ['사과', '골드키위', '감', '배'];
+        function removeItem(items, removeable) {
+            const index = items.indexOf(removeable);
+            return [...items.slice(0, index), ...items.slice(index+1)];
+        }
+        // console.log(removeItem(fruits, '사과'));
+
+        const titles = ['파과', '아가미', '위저드 베이커리'];
+        const updatedTitles = [...titles, '아몬드']; // push()의 대체
+        const updatedTitles2 = ['설계자들', ...titles]; // shift()의 대체
+
+        const scores = [100, 90, 24, 35, 18];
+        // scores.sort((a, b)=>b-a);
+        console.log([...scores].sort((a, b) => a - b));
+        console.log(scores); // 원본 배열이 변경되지 않음
+
+    </script>
+</body>
+</html>
