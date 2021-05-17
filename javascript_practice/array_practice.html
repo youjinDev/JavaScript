@@ -58,6 +58,52 @@
         console.log([...scores].sort((a, b) => a - b));
         console.log(scores); // 원본 배열이 변경되지 않음
 
+        // 객체에서 특정 정보를 꺼내는 경우
+        const band = [
+            {
+                name : 'chichi',
+                instrument: 'guitar'
+            },
+            {
+                name : 'Ann',
+                instrument: 'guitar'
+            },
+            {
+                name : 'sean',
+                instrument: 'bass'
+            },
+            {
+                name : 'you',
+                instrument: 'drums'
+            }
+        ];
+        let instruments = [];
+        band.map(elem => {
+            if(!instruments.includes(elem.instrument)) instruments.push(elem.instrument);
+        });
+        console.log(instruments);
+
+        // find()는 찾으려는 항목이 최대 하나임을 알고 있거나, 반복문에서 break를 사용하는 경우에 적합
+        const instructors = [
+            {
+                name : 'chichi',
+                libraries: ['국립도서관']
+            },
+            {
+                name : 'Ann',
+                libraries: ['미디어정보관', '국립도서관']
+            },
+            {
+                name : 'sean',
+                libraries: ['기념도서관', '문헌정보학 도서관']
+            },
+            {
+                name : 'youra',
+                libraries: ['중앙 도서관']
+            }
+        ];
+        console.log(instructors.find(instructor => instructor.libraries.includes('기념도서관')));
+
     </script>
 </body>
 </html>
