@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const dogs = [
+            {
+                '이름': '맥스',
+                '크기' : '소형견',
+                '견종': '보스턴테리어',
+                '색상': '검정색'
+            },
+            {
+                '이름': '도니',
+                '크기' : '대형견',
+                '견종': '래브라도리트리버',
+                '색상': '검정색'
+            },
+            {
+                '이름': '토토',
+                '크기' : '소형견',
+                '견종': '푸들',
+                '색상': '갈색'
+            },
+            {
+                '이름': '덕구',
+                '크기' : '중형견',
+                '견종': '진도',
+                '색상': '흰색'
+            }
+        ];
+
+            // 색상 고유값 추출하기
+        const colors = dogs.reduce((colors, dog) => {
+            if (colors.includes(dog['색상'])) return colors;
+            return [...colors, dog['색상']];
+        }, []);
+        console.log(colors);
+        
+        // 다른 방식, 같은 결과
+        let set = new Set();
+        const colorsMap = dogs.map(elem => set.add(elem['색상']));
+        console.log(set);
+    </script>
+</body>
+</html>
