@@ -35,7 +35,7 @@
             }
         ];
 
-            // 색상 고유값 추출하기
+        // 중복 없이 색상 고유값 추출하기
         const colors = dogs.reduce((colors, dog) => {
             if (colors.includes(dog['색상'])) return colors;
             return [...colors, dog['색상']];
@@ -46,6 +46,70 @@
         let set = new Set();
         const colorsMap = dogs.map(elem => set.add(elem['색상']));
         console.log(set);
+
+        const color = dogs.reduce((color, dog) => {
+            return [...color, dog['색상']];
+        }, []);
+
+        // reduce는 반복 횟수를 적게 유지하면서도 변환되는 데이터의 형태를 다른 사람에게 알려 줄 수 있음
+        const filters = dogs.reduce((filters, item) => {
+            filters.breed.add(item['견종']);
+            filters.size.add(item['크기']);
+            filters.color.add(item['색상']);
+            return filters;
+        },
+        {
+            breed : new Set(),
+            size: new Set(),
+            color: new Set()
+        });
+        console.log(filters);
+        
+        const developer = [
+            {
+                name: 'Jeff',
+                language: 'php'
+            },
+            {
+                name: 'Sara',
+                language: 'Java'
+            },
+            {
+                name: 'Youjin',
+                language: 'javaScript'
+            },
+            {
+                name: 'Kate',
+                language: 'javaScript'
+            },
+            {
+                name: 'Yura',
+                language: 'Java'
+            },
+            {
+                name: 'Ray',
+                language: 'python'
+            },
+        ]
+
+        const languages = developer.reduce((languages, developer) => {
+            const count = languages[developer.language] || 0;
+            return {
+                ...languages,
+                [developer.language]: count + 1,
+            };
+        },
+        {});
+
+        // const languages = developer.reduce((languages, developer) => {
+        //     if (languages.hasOwnProperty(developer.language)) {
+        //         languages[developer.language] = languages[developer.language] + 1;
+        //     } else {
+        //         languages[developer.language] = 1;
+        //     }
+        //     return languages;
+        // }, {});
+        console.log(languages);
     </script>
 </body>
 </html>
