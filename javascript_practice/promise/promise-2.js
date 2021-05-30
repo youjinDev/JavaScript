@@ -3,21 +3,21 @@
 시각적으로 평평하게 보임!
 */
 
-function getUserPreferences() {
+export function getUserPreferences() {
     const preference = new Promise((resolve, reject) => {
         resolve({
-            theme : 'dusk',
+            theme : 'dark',
+            love : 'val of love'
         });
         reject(() => log(Failure));
     });
     return preference;
 }
 
-function getMusic(theme) {
+export function getMusic(theme) {
     if (theme === 'dark') {
         return Promise.resolve({
             album : 'Jazz for morning',
-            artist : 'Song'
         });
     }
     return Promise.resolve({
@@ -29,10 +29,10 @@ function log(value) {
     return console.log(value);
 }
 
-getUserPreferences()
-.then(preference => {
-    log(preference); //{theme : dusk}
-    return getMusic(preference.theme);
-})
-.then(music => log(music.album)) //summer tropical
-.catch(e => log(e));
+// getUserPreferences()
+// .then(preference => {
+//     log(preference); //{theme : dusk}
+//     return getMusic(preference.theme);
+// })
+// .then(music => log(music.album)) //summer tropical
+// .catch(e => log(e));
