@@ -1,0 +1,25 @@
+.container {
+    width: 1200px;
+    height: 400px;
+    margin: 30px auto;
+    padding: 8px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.title {
+    background-color: salmon;
+    padding: 8px;
+    color: white;
+}
+
+.date {
+    background-color: salmon;
+    color: white;
+    padding: 8px;
+}
+
+.contents {
+    padding: 8px;
+    background-color: white;
+}

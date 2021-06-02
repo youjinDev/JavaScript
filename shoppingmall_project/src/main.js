@@ -56,6 +56,5 @@ function onButtonClick(event, items) {
     }
 
     const filtered = items.filter(item => item[key] === value);
-   
     displayItems(filtered);
 }
