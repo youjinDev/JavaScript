@@ -39,4 +39,4 @@ getArtistByPreference()
 })
 .catch(e => {
     console.error(e);
-})
+});
